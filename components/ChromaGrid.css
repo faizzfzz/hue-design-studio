@@ -95,17 +95,10 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 72%;
+  width: 85%;
   z-index: 1;
   pointer-events: none;
-  border-radius: 10px 0 0 0;
   overflow: hidden;
-  mask-image: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 80%),
-              linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 60%);
-  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 80%),
-                      linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 60%);
-  mask-composite: intersect;
-  -webkit-mask-composite: destination-in;
 }
 
 .chroma-img2-wrapper img {
@@ -113,12 +106,13 @@
   height: auto;
   display: block;
   opacity: 0.85;
+  border-radius: 10px;
 }
 
-/* Info bar — absolute, overlaid at bottom */
+/* Info bar — absolute, overlaid at top */
 .chroma-info {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
   padding: 30px;
@@ -130,13 +124,12 @@
   row-gap: 0.25rem;
   column-gap: 0.75rem;
   align-items: center;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
   box-sizing: border-box;
 }
 
 .chroma-info .name {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
   margin: 0;
   grid-column: 1;
 }
