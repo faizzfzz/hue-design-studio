@@ -76,7 +76,7 @@ export default function HeroSection() {
             speed={80}
             direction="left"
             logoHeight={100}
-            gap={40}
+            gap={0}
             hoverSpeed={0}
             fadeOut
             fadeOutColor="#0b011d"

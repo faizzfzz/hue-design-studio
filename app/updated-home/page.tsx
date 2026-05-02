@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
@@ -7,13 +7,15 @@ import Link from 'next/link'
 import NavbarFloating from '@/components/NavbarFloating'
 import Footer from '@/components/Footer'
 import LogoLoop from '@/components/LogoLoop'
-import ChromaGrid from '@/components/ChromaGrid'
+import SplitHeading from '@/components/SplitHeading'
+import FadeUp from '@/components/FadeUp'
 
 const Beams = dynamic(() => import('@/components/Beams'), { ssr: false })
+const CircularGallery = dynamic(() => import('@/components/CircularGallery'), { ssr: false })
 
 const BASE = 'https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/'
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const PROJECTS = [
   {
@@ -89,7 +91,7 @@ const TESTIMONIALS = [
     location: 'AU',
     avatar: BASE + '67dbcc781195859db32bd0a3_1741495987360.avif',
     logo: BASE + '67c56fe24fcf89b38f955bdb_Group%201171275812.avif',
-    text: "Hue revamped our website with a fast-loading, visually stunning result. Custom solutions tailored perfectly to our needs. Delivered ahead of schedule — exactly what we needed.",
+    text: "Hue revamped our website with a fast-loading, visually stunning result. Custom solutions tailored perfectly to our needs. Delivered ahead of schedule â€” exactly what we needed.",
   },
 ]
 
@@ -107,11 +109,11 @@ const CLIENT_LOGOS = [
 const FAQ_ITEMS = [
   {
     q: 'Do you work with agencies as a white-label partner?',
-    a: "Yes — this is my primary offering. I work as a silent Webflow dev under your brand. Your client never knows I exist. I'm happy to sign an NDA before we start.",
+    a: "Yes â€” this is my primary offering. I work as a silent Webflow dev under your brand. Your client never knows I exist. I'm happy to sign an NDA before we start.",
   },
   {
     q: "What's your typical turnaround time?",
-    a: "A single landing page takes 5–7 days. A full website (5–8 pages + CMS) takes 3–4 weeks. Because I'm in India, I'm often building while you sleep — which means faster progress.",
+    a: "A single landing page takes 5â€“7 days. A full website (5â€“8 pages + CMS) takes 3â€“4 weeks. Because I'm in India, I'm often building while you sleep â€” which means faster progress.",
   },
   {
     q: 'How do you handle revisions?',
@@ -135,7 +137,7 @@ const FAQ_ITEMS = [
   },
 ]
 
-// ─── COMPONENTS ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ COMPONENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function SectionTag({ children }: { children: React.ReactNode }) {
   return (
@@ -179,7 +181,7 @@ function HeroNew() {
         <div className="flex justify-center mb-5">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border"
             style={{ borderColor: 'rgba(0,98,255,0.3)', color: '#79aaf7', background: 'rgba(0,98,255,0.08)' }}>
-            🌏 White-Label Webflow Partner · India
+            ðŸŒ White-Label Webflow Partner Â· India
           </span>
         </div>
 
@@ -191,17 +193,17 @@ function HeroNew() {
         {/* Sub-headline */}
         <p className="para text-lg leading-relaxed max-w-2xl mx-auto mb-10">
           I partner with US, UK &amp; AU agencies as their silent Webflow dev.
-          Clean builds, Loom updates, on-time delivery — while you sleep.
+          Clean builds, Loom updates, on-time delivery â€” while you sleep.
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
           <Link href="/work-links" target="_blank" className="base-button text-base px-8">
-            See My Work →
+            See My Work â†’
           </Link>
           <a href="https://calendly.com/talkwithfaiz/30min" target="_blank" rel="noopener noreferrer"
             className="base-button-yellow">
-            📅 Book a Free Call
+            ðŸ“… Book a Free Call
           </a>
         </div>
 
@@ -220,7 +222,7 @@ function HeroNew() {
             speed={80}
             direction="left"
             logoHeight={100}
-            gap={40}
+            gap={0}
             hoverSpeed={0}
             fadeOut
             fadeOutColor="#000000"
@@ -234,10 +236,10 @@ function HeroNew() {
 
 function PainSection() {
   const pains = [
-    { icon: '📋', text: 'Your Webflow projects are piling up — but you have no dedicated dev.' },
-    { icon: '💸', text: "Local devs cost too much. Junior ones make a mess you have to fix." },
-    { icon: '👻', text: 'Freelancers miss deadlines or vanish mid-project.' },
-    { icon: '🔁', text: "You need someone who just gets it, stays invisible, and delivers clean." },
+    { icon: 'ðŸ“‹', text: 'Your Webflow projects are piling up â€” but you have no dedicated dev.' },
+    { icon: 'ðŸ’¸', text: "Local devs cost too much. Junior ones make a mess you have to fix." },
+    { icon: 'ðŸ‘»', text: 'Freelancers miss deadlines or vanish mid-project.' },
+    { icon: 'ðŸ”', text: "You need someone who just gets it, stays invisible, and delivers clean." },
   ]
 
   return (
@@ -245,9 +247,9 @@ function PainSection() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>For Agency Owners</SectionTag>
-          <h2 className="heading-h2 mb-4">Sound familiar?</h2>
+          <SplitHeading as="h2" className="heading-h2 mb-4">Sound familiar?</SplitHeading>
           <p className="para max-w-xl mx-auto">
-            If you run a web agency and any of these hit close to home — read on.
+            If you run a web agency and any of these hit close to home â€” read on.
           </p>
         </div>
 
@@ -273,23 +275,23 @@ function PainSection() {
 function ServicesNew() {
   const services = [
     {
-      icon: '🤝',
+      icon: 'ðŸ¤',
       title: 'White-Label Webflow Builds',
-      desc: 'Full Webflow sites built cleanly under your brand. I stay invisible — your client never knows I exist. NDA-ready from day one.',
+      desc: 'Full Webflow sites built cleanly under your brand. I stay invisible â€” your client never knows I exist. NDA-ready from day one.',
       tag: 'For Agencies',
       span: 'md:col-span-2',
     },
     {
-      icon: '🚀',
+      icon: 'ðŸš€',
       title: 'SaaS Landing Pages',
       desc: 'High-converting landing pages for growth-stage startups. CMS-ready, fast-loading, and built to rank.',
       tag: 'For Startups',
       span: '',
     },
     {
-      icon: '🔧',
+      icon: 'ðŸ”§',
       title: 'Webflow CMS & Retainers',
-      desc: 'Ongoing dev support for agencies and founders. Updates, new pages, fixes — handled while you focus on clients.',
+      desc: 'Ongoing dev support for agencies and founders. Updates, new pages, fixes â€” handled while you focus on clients.',
       tag: 'Ongoing Support',
       span: '',
     },
@@ -299,11 +301,9 @@ function ServicesNew() {
     <section className="section-padding dot-bg">
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
-          <SectionTag>What I Do</SectionTag>
-          <h2 className="heading-h2 mb-4">Here&apos;s how I help</h2>
-          <p className="para max-w-lg">
-            Three focused services. Each one designed to solve a specific problem.
-          </p>
+          <FadeUp><SectionTag>What I Do</SectionTag></FadeUp>
+          <SplitHeading as="h2" className="heading-h2 mb-4">Here's how I help</SplitHeading>
+          <FadeUp delay={0.1}><p className="para max-w-lg">Three focused services. Each one designed to solve a specific problem.</p></FadeUp>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -341,7 +341,7 @@ function ProcessNew() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <SectionTag>How We Work</SectionTag>
-          <h2 className="heading-h2 mb-4">How we work together</h2>
+          <SplitHeading as="h2" className="heading-h2 mb-4">How we work together</SplitHeading>
           <p className="para max-w-2xl">
             No surprises. No chasing updates. Just a clean, async-friendly process from first call to final launch.
           </p>
@@ -372,32 +372,35 @@ function ProcessNew() {
   )
 }
 
+const GALLERY_ITEMS = PROJECTS.map(p => ({ image: p.image2 ?? p.image, text: p.title }))
+
 function PortfolioNew() {
   return (
-    <section id="projects-x" className="section-padding dot-bg relative">
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-12 text-center">
-          <SectionTag>Recent Work</SectionTag>
-          <h2 className="heading-h2 mb-3">Projects I&apos;ve shipped</h2>
-          <p className="para max-w-md mx-auto">Real sites, real clients, real results.</p>
-        </div>
+    <section id="projects-x" className="dot-bg relative overflow-hidden">
+      <div className="pt-20 pb-6 text-center px-6">
+        <FadeUp><SectionTag>Recent Work</SectionTag></FadeUp>
+        <SplitHeading as="h2" className="heading-h2 mb-3">Projects I&apos;ve shipped</SplitHeading>
+        <FadeUp delay={0.1}><p className="para max-w-md mx-auto">Real sites, real clients, real results.</p></FadeUp>
+      </div>
 
-        <ChromaGrid
-          items={PROJECTS}
-          radius={480}
-          damping={0.45}
-          fadeOut={0.6}
-          ease="power3.out"
-          columns={3}
-          rows={2}
+      <div style={{ height: '600px', position: 'relative' }}>
+        <CircularGallery
+          items={GALLERY_ITEMS}
+          bend={1}
+          textColor="#ffffff"
+          borderRadius={0.05}
+          scrollSpeed={2}
+          scrollEase={0.05}
         />
+      </div>
 
-        <div className="mt-10 flex justify-center">
+      <div className="pb-16 flex justify-center">
+        <FadeUp>
           <Link href="https://linktr.ee/faizzfz" target="_blank" rel="noopener noreferrer"
             className="base-button px-8">
-            See All Projects →
+            See All Projects â†’
           </Link>
-        </div>
+        </FadeUp>
       </div>
     </section>
   )
@@ -405,12 +408,12 @@ function PortfolioNew() {
 
 function WhyMeSection() {
   const reasons = [
-    { icon: '🌏', title: 'India Timezone Advantage', desc: 'I build while US, UK & AU clients sleep. Projects move faster without extra calls.' },
-    { icon: '🔒', title: 'White-Label Ready', desc: 'Silent partner by default. I sign NDAs, stay invisible, and your client never sees my name.' },
-    { icon: '🎬', title: 'Async-Friendly', desc: 'Loom updates at every stage. Slack-ready. No micromanagement, no unnecessary calls.' },
-    { icon: '✂️', title: 'Clean, Handoff-Ready Code', desc: 'No spaghetti builds. Your team or your client can jump in and take over anytime.' },
-    { icon: '⏱️', title: 'On-Time, Every Time', desc: '100% of projects delivered on schedule. Deadline is a commitment, not a suggestion.' },
-    { icon: '💬', title: 'Direct Communication', desc: 'No middlemen. You talk directly to the person building. Fast responses, clear updates.' },
+    { icon: 'ðŸŒ', title: 'India Timezone Advantage', desc: 'I build while US, UK & AU clients sleep. Projects move faster without extra calls.' },
+    { icon: 'ðŸ”’', title: 'White-Label Ready', desc: 'Silent partner by default. I sign NDAs, stay invisible, and your client never sees my name.' },
+    { icon: 'ðŸŽ¬', title: 'Async-Friendly', desc: 'Loom updates at every stage. Slack-ready. No micromanagement, no unnecessary calls.' },
+    { icon: 'âœ‚ï¸', title: 'Clean, Handoff-Ready Code', desc: 'No spaghetti builds. Your team or your client can jump in and take over anytime.' },
+    { icon: 'â±ï¸', title: 'On-Time, Every Time', desc: '100% of projects delivered on schedule. Deadline is a commitment, not a suggestion.' },
+    { icon: 'ðŸ’¬', title: 'Direct Communication', desc: 'No middlemen. You talk directly to the person building. Fast responses, clear updates.' },
   ]
 
   return (
@@ -418,9 +421,9 @@ function WhyMeSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-14">
           <SectionTag>Why Me</SectionTag>
-          <h2 className="heading-h2 mb-4">Why agencies choose me</h2>
+          <SplitHeading as="h2" className="heading-h2 mb-4">Why agencies choose me</SplitHeading>
           <p className="para max-w-lg">
-            Over any other freelancer or agency — here&apos;s what makes the difference.
+            Over any other freelancer or agency â€” here&apos;s what makes the difference.
           </p>
         </div>
 
@@ -444,9 +447,9 @@ function TestimonialsNew() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-14">
           <SectionTag>Client Stories</SectionTag>
-          <h2 className="heading-h2 mb-4">What clients say</h2>
+          <SplitHeading as="h2" className="heading-h2 mb-4">What clients say</SplitHeading>
           <p className="para max-w-xl mx-auto">
-            From agency owners to startup founders — here&apos;s what working with me looks like.
+            From agency owners to startup founders â€” here&apos;s what working with me looks like.
           </p>
         </div>
 
@@ -458,7 +461,7 @@ function TestimonialsNew() {
 
               <div className="flex gap-1">
                 {[...Array(5)].map((_, si) => (
-                  <span key={si} className="text-yellow-400 text-base">★</span>
+                  <span key={si} className="text-yellow-400 text-base">â˜…</span>
                 ))}
               </div>
 
@@ -472,7 +475,7 @@ function TestimonialsNew() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <p className="font-bold text-white text-sm leading-tight">{t.name}</p>
-                    <span className="text-white/30 text-xs">· {t.location}</span>
+                    <span className="text-white/30 text-xs">Â· {t.location}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-white/40 text-xs">{t.role} @</span>
@@ -503,7 +506,7 @@ function PricingSection() {
       name: 'Growth',
       price: 'From $1,200',
       desc: 'Full website for SaaS startups and growing brands.',
-      features: ['5–8 pages + CMS', 'Animations & interactions', 'Full SEO setup', '2 revision rounds', '7-day support', 'Loom handoff video'],
+      features: ['5â€“8 pages + CMS', 'Animations & interactions', 'Full SEO setup', '2 revision rounds', '7-day support', 'Loom handoff video'],
       cta: 'Get a Quote',
       highlight: true,
     },
@@ -522,7 +525,7 @@ function PricingSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>Investment</SectionTag>
-          <h2 className="heading-h2 mb-4">Simple, transparent pricing</h2>
+          <SplitHeading as="h2" className="heading-h2 mb-4">Simple, transparent pricing</SplitHeading>
           <p className="para max-w-xl mx-auto">
             All projects include responsive design, Loom walkthroughs, and a clean handoff.
           </p>
@@ -550,20 +553,20 @@ function PricingSection() {
               <ul className="flex flex-col gap-2.5 flex-1">
                 {plan.features.map((f, fi) => (
                   <li key={fi} className="flex items-center gap-2.5 text-sm text-white/70">
-                    <span style={{ color: '#0062ff' }}>✓</span> {f}
+                    <span style={{ color: '#0062ff' }}>âœ“</span> {f}
                   </li>
                 ))}
               </ul>
               <a href="https://calendly.com/talkwithfaiz/30min" target="_blank" rel="noopener noreferrer"
                 className={plan.highlight ? 'base-button justify-center text-center' : 'base-button-yellow justify-center text-center'}>
-                {plan.cta} →
+                {plan.cta} â†’
               </a>
             </div>
           ))}
         </div>
 
         <p className="text-center para text-xs text-white/40 mt-8">
-          Not sure which fits? Book a free call — I&apos;ll tell you exactly what you need.
+          Not sure which fits? Book a free call â€” I&apos;ll tell you exactly what you need.
         </p>
       </div>
     </section>
@@ -578,8 +581,8 @@ function FAQNew() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>FAQs</SectionTag>
-          <h2 className="heading-h2 mb-4">Frequently Asked Questions</h2>
-          <p className="para">Every question agency owners ask before reaching out — answered.</p>
+          <SplitHeading as="h2" className="heading-h2 mb-4">Frequently Asked Questions</SplitHeading>
+          <p className="para">Every question agency owners ask before reaching out â€” answered.</p>
         </div>
 
         <div className="flex flex-col">
@@ -623,7 +626,7 @@ function FinalCTA() {
         </div>
 
         <SectionTag>Ready to Start?</SectionTag>
-        <h2 className="heading-h2 mb-5">Let&apos;s build something great</h2>
+        <SplitHeading as="h2" className="heading-h2 mb-5">Let's build something great</SplitHeading>
         <p className="para text-lg mb-4 max-w-xl mx-auto">
           I&apos;m currently accepting new agency partners and project inquiries.
         </p>
@@ -634,11 +637,11 @@ function FinalCTA() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="https://calendly.com/talkwithfaiz/30min" target="_blank" rel="noopener noreferrer"
             className="base-button text-base px-10 justify-center">
-            📅 Book a Free Call
+            ðŸ“… Book a Free Call
           </a>
           <a href="https://api.whatsapp.com/send?phone=918882690600" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full border border-white/20 text-white/80 text-sm font-semibold hover:border-white/40 hover:text-white transition-all">
-            💬 WhatsApp Me
+            ðŸ’¬ WhatsApp Me
           </a>
         </div>
 
@@ -650,7 +653,7 @@ function FinalCTA() {
   )
 }
 
-// ─── PAGE ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ PAGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function UpdatedHomePage() {
   return (
@@ -670,3 +673,4 @@ export default function UpdatedHomePage() {
     </main>
   )
 }
+

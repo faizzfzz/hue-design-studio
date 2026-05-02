@@ -288,7 +288,7 @@ a {
 /* ---- Grid Card Glassmorphism ---- */
 .grid-card {
   position: relative;
-  background: radial-gradient(50% 70.31% at 50% 0%, rgba(126, 61, 255, 0.04) 0%, rgba(126, 61, 255, 0) 100%), rgba(11, 1, 29, 0.01);
+  background: radial-gradient(50% 70.31% at 50% 0%, rgba(126, 61, 255, 0.08) 0%, rgba(126, 61, 255, 0) 100%), rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8.5px);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -473,7 +473,7 @@ textarea.form-field {
 
 /* ---- Process Steps ---- */
 .process-step {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 28px 32px;
@@ -494,7 +494,7 @@ textarea.form-field {
 
 /* ---- Why Us Cards ---- */
 .why-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 32px 28px;

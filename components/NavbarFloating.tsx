@@ -87,18 +87,9 @@ export default function NavbarFloating() {
               href="https://calendly.com/talkwithfaiz/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 whitespace-nowrap text-sm font-semibold ml-1 mr-1 px-4 py-2 rounded-full transition-colors duration-200"
-              style={{
-                border: '1px solid rgba(0,98,255,0.45)',
-                color: '#79aaf7',
-                background: 'rgba(0,98,255,0.1)',
-              }}
+              className="base-button ml-1 mr-1 whitespace-nowrap"
             >
               Book a Call
-              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M0 5h7" />
-                <path d="M4 1l4 4-4 4" />
-              </svg>
             </a>
           </div>
         </div>
