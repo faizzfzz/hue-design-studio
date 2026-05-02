@@ -7,7 +7,6 @@ import Link from 'next/link'
 import NavbarFloating from '@/components/NavbarFloating'
 import Footer from '@/components/Footer'
 import LogoLoop from '@/components/LogoLoop'
-import CursorGlow from '@/components/CursorGlow'
 import ChromaGrid from '@/components/ChromaGrid'
 
 const Beams = dynamic(() => import('@/components/Beams'), { ssr: false })
@@ -19,54 +18,48 @@ const BASE = 'https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/'
 const PROJECTS = [
   {
     image: '/images/project-veris.avif',
+    image2: BASE + '67da5113017310b7c54705b1_Frame%202147223292.avif',
     title: 'Veris',
-    subtitle: 'SaaS Landing Page',
-    handle: 'getveris.com',
     borderColor: '#3B82F6',
     gradient: 'linear-gradient(145deg, #3B82F6, #000)',
     url: 'https://www.getveris.com/',
   },
   {
     image: '/images/project-futurense.avif',
+    image2: BASE + '67da52576655dc248a94ef49_Frame%202147223294.avif',
     title: 'Futurense',
-    subtitle: 'Marketing Website',
-    handle: 'futurense.com',
     borderColor: '#10B981',
     gradient: 'linear-gradient(210deg, #10B981, #000)',
     url: 'https://futurense.com/',
   },
   {
     image: '/images/project-zoconut.avif',
+    image2: BASE + '67da52baf341559e0fb3ccf9_Frame%202147223296.avif',
     title: 'Zoconut',
-    subtitle: 'SaaS Website',
-    handle: 'zoconut.com',
     borderColor: '#8B5CF6',
     gradient: 'linear-gradient(225deg, #8B5CF6, #000)',
     url: 'https://www.zoconut.com/',
   },
   {
     image: '/images/project-onepercentclub.avif',
+    image2: BASE + '67da530e525c24160128f45c_Frame%202147223298.avif',
     title: '1% Club',
-    subtitle: 'Landing Page',
-    handle: 'onepercentclub.io',
     borderColor: '#F59E0B',
     gradient: 'linear-gradient(165deg, #F59E0B, #000)',
     url: 'https://www.onepercentclub.io/',
   },
   {
     image: '/images/project-unscript.avif',
+    image2: BASE + '67da537b58342fe236bf613e_Frame%202147223302.avif',
     title: 'Unscript',
-    subtitle: 'SaaS Website',
-    handle: 'unscript.ai',
     borderColor: '#06B6D4',
     gradient: 'linear-gradient(135deg, #06B6D4, #000)',
     url: 'https://www.unscript.ai/',
   },
   {
     image: '/images/project-joindevops.avif',
+    image2: BASE + '67da537d017310b7c5494918_Frame%202147223300.avif',
     title: 'Joindevops',
-    subtitle: 'Marketing Website',
-    handle: 'joindevops.com',
     borderColor: '#EF4444',
     gradient: 'linear-gradient(195deg, #EF4444, #000)',
     url: 'https://www.joindevops.com/',
@@ -662,7 +655,6 @@ function FinalCTA() {
 export default function UpdatedHomePage() {
   return (
     <main className="bg-[#000000] text-white overflow-x-hidden">
-      <CursorGlow />
       <NavbarFloating />
       <HeroNew />
       <PainSection />

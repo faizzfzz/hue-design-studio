@@ -6,6 +6,7 @@ import './ChromaGrid.css'
 
 export interface ChromaItem {
   image: string
+  image2?: string
   title: string
   subtitle?: string
   handle?: string
@@ -124,11 +125,24 @@ export const ChromaGrid = ({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={c.image} alt={c.title} loading="lazy" />
           </div>
+          {c.image2 && (
+            <div className="chroma-img2-wrapper">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={c.image2} alt={`${c.title} preview`} loading="lazy" />
+            </div>
+          )}
           <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>
-            {c.handle && <span className="handle">{c.handle}</span>}
-            <p className="role">{c.subtitle}</p>
-            {c.location && <span className="location">{c.location}</span>}
+            {c.url && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src="https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67ddc3236980be3d22017b72_open_in_new_24dp_FFFFFF_FILL0_wght200_GRAD200_opsz24.svg"
+                alt="Open"
+                width={18}
+                height={18}
+                className="chroma-open-icon"
+              />
+            )}
           </footer>
         </article>
       ))}
