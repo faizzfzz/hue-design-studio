@@ -8,6 +8,7 @@ import NavbarFloating from '@/components/NavbarFloating'
 import Footer from '@/components/Footer'
 import LogoLoop from '@/components/LogoLoop'
 import CursorGlow from '@/components/CursorGlow'
+import ChromaGrid from '@/components/ChromaGrid'
 
 const Beams = dynamic(() => import('@/components/Beams'), { ssr: false })
 
@@ -16,12 +17,60 @@ const BASE = 'https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/'
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
 const PROJECTS = [
-  { name: 'Veris', image: BASE + '67da5113017310b7c54705b1_Frame%202147223292.avif', url: 'https://www.getveris.com/', tag: 'SaaS Landing Page' },
-  { name: 'Futurense', image: BASE + '67da52576655dc248a94ef49_Frame%202147223294.avif', url: 'https://futurense.com/', tag: 'Marketing Website' },
-  { name: 'Zoconut', image: BASE + '67da52baf341559e0fb3ccf9_Frame%202147223296.avif', url: 'https://www.zoconut.com/', tag: 'SaaS Website' },
-  { name: '1% Club', image: BASE + '67da530e525c24160128f45c_Frame%202147223298.avif', url: 'https://www.onepercentclub.io/', tag: 'Landing Page' },
-  { name: 'Unscript', image: BASE + '67da537b58342fe236bf613e_Frame%202147223302.avif', url: 'https://www.unscript.ai/', tag: 'SaaS Website' },
-  { name: 'Joindevops', image: BASE + '67da537d017310b7c5494918_Frame%202147223300.avif', url: 'https://www.joindevops.com/', tag: 'Marketing Website' },
+  {
+    image: '/images/project-veris.avif',
+    title: 'Veris',
+    subtitle: 'SaaS Landing Page',
+    handle: 'getveris.com',
+    borderColor: '#3B82F6',
+    gradient: 'linear-gradient(160deg, #0d1a33 0%, #000 60%)',
+    url: 'https://www.getveris.com/',
+  },
+  {
+    image: '/images/project-futurense.avif',
+    title: 'Futurense',
+    subtitle: 'Marketing Website',
+    handle: 'futurense.com',
+    borderColor: '#10B981',
+    gradient: 'linear-gradient(160deg, #0a2018 0%, #000 60%)',
+    url: 'https://futurense.com/',
+  },
+  {
+    image: '/images/project-zoconut.avif',
+    title: 'Zoconut',
+    subtitle: 'SaaS Website',
+    handle: 'zoconut.com',
+    borderColor: '#8B5CF6',
+    gradient: 'linear-gradient(160deg, #160d2e 0%, #000 60%)',
+    url: 'https://www.zoconut.com/',
+  },
+  {
+    image: '/images/project-onepercentclub.avif',
+    title: '1% Club',
+    subtitle: 'Landing Page',
+    handle: 'onepercentclub.io',
+    borderColor: '#F59E0B',
+    gradient: 'linear-gradient(160deg, #1f1400 0%, #000 60%)',
+    url: 'https://www.onepercentclub.io/',
+  },
+  {
+    image: '/images/project-unscript.avif',
+    title: 'Unscript',
+    subtitle: 'SaaS Website',
+    handle: 'unscript.ai',
+    borderColor: '#06B6D4',
+    gradient: 'linear-gradient(160deg, #001a1f 0%, #000 60%)',
+    url: 'https://www.unscript.ai/',
+  },
+  {
+    image: '/images/project-joindevops.avif',
+    title: 'Joindevops',
+    subtitle: 'Marketing Website',
+    handle: 'joindevops.com',
+    borderColor: '#EF4444',
+    gradient: 'linear-gradient(160deg, #1f0505 0%, #000 60%)',
+    url: 'https://www.joindevops.com/',
+  },
 ]
 
 const TESTIMONIALS = [
@@ -334,34 +383,21 @@ function PortfolioNew() {
   return (
     <section id="projects-x" className="section-padding dot-bg relative">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <SectionTag>Recent Work</SectionTag>
           <h2 className="heading-h2 mb-3">Projects I&apos;ve shipped</h2>
-          <p className="para max-w-md">Real sites, real clients, real results.</p>
+          <p className="para max-w-md mx-auto">Real sites, real clients, real results.</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {PROJECTS.map((project, i) => (
-            <Link key={i} href={project.url} target="_blank" rel="noopener noreferrer"
-              className="project-card group relative rounded-2xl overflow-hidden"
-              style={{ aspectRatio: '16 / 10' }}>
-              <Image src={project.image} alt={project.name} fill
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
-                <div>
-                  <p className="text-white font-bold text-lg drop-shadow">{project.name}</p>
-                  <p className="text-white/50 text-xs mt-0.5">{project.tag}</p>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  <Image src="https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67ddc3236980be3d22017b72_open_in_new_24dp_FFFFFF_FILL0_wght200_GRAD200_opsz24.svg"
-                    alt="Open" width={14} height={14} />
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <ChromaGrid
+          items={PROJECTS}
+          radius={320}
+          damping={0.45}
+          fadeOut={0.6}
+          ease="power3.out"
+          columns={3}
+          rows={2}
+        />
 
         <div className="mt-10 flex justify-center">
           <Link href="https://linktr.ee/faizzfz" target="_blank" rel="noopener noreferrer"
