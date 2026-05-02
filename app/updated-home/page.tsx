@@ -23,7 +23,7 @@ const PROJECTS = [
     subtitle: 'SaaS Landing Page',
     handle: 'getveris.com',
     borderColor: '#3B82F6',
-    gradient: 'linear-gradient(160deg, #0d1a33 0%, #000 60%)',
+    gradient: 'linear-gradient(145deg, #3B82F6, #000)',
     url: 'https://www.getveris.com/',
   },
   {
@@ -32,7 +32,7 @@ const PROJECTS = [
     subtitle: 'Marketing Website',
     handle: 'futurense.com',
     borderColor: '#10B981',
-    gradient: 'linear-gradient(160deg, #0a2018 0%, #000 60%)',
+    gradient: 'linear-gradient(210deg, #10B981, #000)',
     url: 'https://futurense.com/',
   },
   {
@@ -41,7 +41,7 @@ const PROJECTS = [
     subtitle: 'SaaS Website',
     handle: 'zoconut.com',
     borderColor: '#8B5CF6',
-    gradient: 'linear-gradient(160deg, #160d2e 0%, #000 60%)',
+    gradient: 'linear-gradient(225deg, #8B5CF6, #000)',
     url: 'https://www.zoconut.com/',
   },
   {
@@ -50,7 +50,7 @@ const PROJECTS = [
     subtitle: 'Landing Page',
     handle: 'onepercentclub.io',
     borderColor: '#F59E0B',
-    gradient: 'linear-gradient(160deg, #1f1400 0%, #000 60%)',
+    gradient: 'linear-gradient(165deg, #F59E0B, #000)',
     url: 'https://www.onepercentclub.io/',
   },
   {
@@ -59,7 +59,7 @@ const PROJECTS = [
     subtitle: 'SaaS Website',
     handle: 'unscript.ai',
     borderColor: '#06B6D4',
-    gradient: 'linear-gradient(160deg, #001a1f 0%, #000 60%)',
+    gradient: 'linear-gradient(135deg, #06B6D4, #000)',
     url: 'https://www.unscript.ai/',
   },
   {
@@ -68,7 +68,7 @@ const PROJECTS = [
     subtitle: 'Marketing Website',
     handle: 'joindevops.com',
     borderColor: '#EF4444',
-    gradient: 'linear-gradient(160deg, #1f0505 0%, #000 60%)',
+    gradient: 'linear-gradient(195deg, #EF4444, #000)',
     url: 'https://www.joindevops.com/',
   },
 ]
