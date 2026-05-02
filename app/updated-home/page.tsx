@@ -7,6 +7,7 @@ import Link from 'next/link'
 import NavbarFloating from '@/components/NavbarFloating'
 import Footer from '@/components/Footer'
 import LogoLoop from '@/components/LogoLoop'
+import CursorGlow from '@/components/CursorGlow'
 
 const Beams = dynamic(() => import('@/components/Beams'), { ssr: false })
 
@@ -625,6 +626,7 @@ function FinalCTA() {
 export default function UpdatedHomePage() {
   return (
     <main className="bg-[#000000] text-white overflow-x-hidden">
+      <CursorGlow />
       <NavbarFloating />
       <HeroNew />
       <PainSection />
