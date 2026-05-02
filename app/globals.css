@@ -416,6 +416,15 @@ textarea.form-field {
   box-shadow: 0 16px 48px rgba(126,61,255,0.12);
 }
 
+/* ---- CurvedLoop text style ---- */
+.curved-marquee-text {
+  fill: rgba(255, 255, 255, 0.85);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
 /* Hide scrollbar utility */
 .scrollbar-none::-webkit-scrollbar { display: none; }
 
