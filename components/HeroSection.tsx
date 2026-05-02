@@ -184,6 +184,7 @@ function ClientLogoScroll() {
               width={180}
               height={64}
               className="h-14 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+              style={{ mixBlendMode: 'luminosity' }}
             />
           </div>
         ))}

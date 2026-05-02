@@ -76,7 +76,7 @@ export default function CurvedLogoLoop({ speed = 1.2, curveAmount = 220, interac
 
         // Reveal SVG only after first positions are set
         if (!animating) {
-          svgEl.style.visibility = 'visible'
+          svgEl.style.opacity = '1'
           animating = true
         }
 
@@ -126,7 +126,7 @@ export default function CurvedLogoLoop({ speed = 1.2, curveAmount = 220, interac
         ref={svgRef}
         viewBox="0 0 1440 150"
         className="w-full block"
-        style={{ aspectRatio: '1440 / 150', userSelect: 'none', visibility: 'hidden' }}
+        style={{ aspectRatio: '1440 / 150', userSelect: 'none', opacity: 0, transition: 'opacity 0.3s ease' }}
       >
         <defs>
           <linearGradient id="logo-fade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
