@@ -399,6 +399,14 @@ textarea.form-field {
   box-shadow: 0 0 40px rgba(126,61,255,0.1);
 }
 
+/* ---- Project Card ---- */
+.project-card {
+  transition: box-shadow 0.3s ease;
+}
+.project-card:hover {
+  box-shadow: 0 16px 48px rgba(126, 61, 255, 0.2);
+}
+
 /* ---- Service Card ---- */
 .service-card {
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;

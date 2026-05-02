@@ -1,6 +1,3 @@
-'use client'
-
-import { useState, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -15,26 +12,7 @@ const PROJECTS = [
   { name: 'Quickreply', image: 'https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67da5452ac80062ccd556c54_Frame%202147223306.avif', url: 'https://www.quickreply.ai/new-year-2025' },
 ]
 
-export default function ProjectsSlider() {
-  const [current, setCurrent] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const thumbsRef = useRef<HTMLDivElement>(null)
-
-  const prev = useCallback(() => setCurrent((c) => (c === 0 ? PROJECTS.length - 1 : c - 1)), [])
-  const next = useCallback(() => setCurrent((c) => (c === PROJECTS.length - 1 ? 0 : c + 1)), [])
-
-  useEffect(() => {
-    if (paused) return
-    const timer = setInterval(next, 3500)
-    return () => clearInterval(timer)
-  }, [next, paused])
-
-  // Scroll active thumb into view
-  useEffect(() => {
-    const el = thumbsRef.current?.children[current] as HTMLElement
-    el?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
-  }, [current])
-
+export default function ProjectsGrid() {
   return (
     <section id="projects-x" className="relative section-padding bg-[#0b011d]">
       <div className="blob-animate is-4 pointer-events-none" />
@@ -61,112 +39,42 @@ export default function ProjectsSlider() {
           </div>
         </div>
 
-        {/* Main slide */}
-        <div
-          className="relative rounded-2xl overflow-hidden"
-          style={{ aspectRatio: '16 / 7' }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          {/* Slides */}
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {PROJECTS.map((project, i) => (
-            <div
-              key={i}
-              className="absolute inset-0 transition-opacity duration-700"
-              style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
-            >
-              <Image
-                src={project.image}
-                alt={project.name}
-                fill
-                className="object-cover object-top select-none"
-                draggable={false}
-                sizes="90vw"
-                priority={i === 0}
-              />
-            </div>
-          ))}
-
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to top, rgba(11,1,29,0.85) 0%, rgba(11,1,29,0.1) 50%, transparent 100%)' }}
-          />
-
-          {/* Project name + link */}
-          <div className="absolute bottom-0 left-0 right-0 z-20 p-8 flex items-end justify-between">
-            <div>
-              <p className="text-white/60 text-sm font-poppins mb-1">
-                {String(current + 1).padStart(2, '0')} / {String(PROJECTS.length).padStart(2, '0')}
-              </p>
-              <p className="text-white font-bold text-4xl md:text-5xl font-montserrat drop-shadow-lg leading-tight">
-                {PROJECTS[current].name}
-              </p>
-            </div>
             <Link
-              href={PROJECTS[current].url}
+              key={i}
+              href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="website-link flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold font-montserrat transition-all hover:scale-105"
-            >
-              Visit site
-              <Image
-                src="https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67ddc3236980be3d22017b72_open_in_new_24dp_FFFFFF_FILL0_wght200_GRAD200_opsz24.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="website-link-icon"
-              />
-            </Link>
-          </div>
-
-          {/* Arrow buttons */}
-          <button
-            onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center transition-all border border-white/10 hover:border-white/30"
-            aria-label="Previous"
-          >
-            <Image src="https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67ad99294e168b338b49ed23_arrow_forward_ios%20(1).svg" alt="" width={18} height={18} className="opacity-80" />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center transition-all border border-white/10 hover:border-white/30"
-            aria-label="Next"
-          >
-            <Image src="https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67ad99294e168b338b49ed22_arrow_forward_ios.svg" alt="" width={18} height={18} className="opacity-80" />
-          </button>
-        </div>
-
-        {/* Thumbnail strip */}
-        <div
-          ref={thumbsRef}
-          className="flex gap-3 mt-4 overflow-x-auto pb-1 scrollbar-none"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {PROJECTS.map((project, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`relative flex-shrink-0 rounded-xl overflow-hidden transition-all duration-300 ${
-                i === current
-                  ? 'ring-2 ring-purple-500 opacity-100 scale-[1.03]'
-                  : 'opacity-40 hover:opacity-70'
-              }`}
-              style={{ width: 120, height: 68 }}
-              aria-label={project.name}
+              className="project-card group relative rounded-2xl overflow-hidden"
+              style={{ aspectRatio: '16 / 10' }}
             >
               <Image
                 src={project.image}
                 alt={project.name}
                 fill
-                className="object-cover object-top"
-                sizes="120px"
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 flex items-end p-1.5">
-                <span className="text-white text-[10px] font-semibold font-montserrat drop-shadow leading-none">
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b011d]/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+
+              {/* Name + icon */}
+              <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+                <p className="text-white font-bold text-xl font-montserrat drop-shadow">
                   {project.name}
-                </span>
+                </p>
+                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                  <Image
+                    src="https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67ddc3236980be3d22017b72_open_in_new_24dp_FFFFFF_FILL0_wght200_GRAD200_opsz24.svg"
+                    alt="Open"
+                    width={14}
+                    height={14}
+                  />
+                </div>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
 
