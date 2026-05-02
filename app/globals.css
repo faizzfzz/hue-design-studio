@@ -1,8 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'WFVisualSans';
+  src: url('/fonts/WFVisualSans-RegularText.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'WFVisualSans';
+  src: url('/fonts/WFVisualSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'WFVisualSans';
+  src: url('/fonts/WFVisualSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'WFVisualSans';
+  src: url('/fonts/WFVisualSans-SemiBoldText.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --h1: clamp(2.875rem, 2.375rem + 2.5vw, 4.625rem);
@@ -16,7 +46,7 @@
   --card-color: rgb(23, 23, 23);
 
   --purple-accent: #7e3dff;
-  --green-accent: #4ff543;
+  --green-accent: #0062ff;
 }
 
 /* ---- Reset / Base ---- */
@@ -31,7 +61,7 @@ html {
 body {
   background-color: var(--bg-color);
   color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: antialiased;
@@ -69,7 +99,7 @@ a {
 /* ---- Typography ---- */
 .heading-h1 {
   font-size: var(--h1);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -78,7 +108,7 @@ a {
 
 .heading-h2 {
   font-size: var(--h2);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 700;
   line-height: 1.2;
   color: #ffffff;
@@ -86,7 +116,7 @@ a {
 
 .heading-h3 {
   font-size: var(--h3);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 700;
   line-height: 1.3;
   color: #ffffff;
@@ -94,7 +124,7 @@ a {
 
 .heading-h4 {
   font-size: 1.25rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 700;
   line-height: 1.4;
   color: #ffffff;
@@ -102,7 +132,7 @@ a {
 
 .para {
   font-size: var(--para);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'WFVisualSans', var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 400;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
@@ -115,19 +145,19 @@ a {
   gap: 8px;
   padding: 12px 24px;
   border-radius: 100px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
   border: none;
   color: #ffffff;
   background: linear-gradient(
-    135deg,
-    #7e3dff 0%,
-    #a855f7 25%,
-    #7e3dff 50%,
-    #4ff543 75%,
-    #7e3dff 100%
+    290deg,
+    #0062ff 0%,
+    #0062ff 40%,
+    #79aaf7 50%,
+    #0062ff 60%,
+    #0062ff 100%
   );
   background-size: 500% 500%;
   animation: button-reflection 3s ease infinite;
@@ -138,7 +168,7 @@ a {
 
 .base-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(126, 61, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 98, 255, 0.4);
 }
 
 .base-button-yellow {
@@ -147,7 +177,7 @@ a {
   gap: 8px;
   padding: 12px 24px;
   border-radius: 100px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
@@ -176,7 +206,7 @@ a {
 .text-button {
   display: inline-flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: var(--para);
   color: rgba(255, 255, 255, 0.7);
@@ -209,7 +239,7 @@ a {
 .blob-animate.is-2nd {
   width: 360px;
   height: 360px;
-  background: radial-gradient(circle, rgba(79, 245, 67, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 98, 255, 0.3) 0%, transparent 70%);
   top: 100px;
   right: -80px;
   animation-duration: 6s;
@@ -238,7 +268,7 @@ a {
 .blob-animate.is5 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(79, 245, 67, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 98, 255, 0.15) 0%, transparent 70%);
   bottom: 0;
   left: -100px;
   animation-duration: 6s;
@@ -248,7 +278,7 @@ a {
 .blob-animate.for-cta {
   width: 350px;
   height: 350px;
-  background: radial-gradient(circle, rgba(79, 245, 67, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 98, 255, 0.2) 0%, transparent 70%);
   top: 50%;
   right: 10%;
   transform: translateY(-50%);
@@ -271,7 +301,7 @@ a {
   box-shadow: 0 0 40px rgba(126, 61, 255, 0.1);
 }
 
-/* Green accent card */
+/* Blue accent card */
 .grid-card-green::before {
   content: '';
   box-sizing: border-box;
@@ -282,9 +312,9 @@ a {
   padding: 1px;
   background: linear-gradient(
     105.43deg,
-    rgba(79, 245, 67, 0) 25.1%,
-    rgba(79, 245, 67, 0.32) 72.57%,
-    rgba(79, 245, 67, 0) 102.57%
+    rgba(0, 98, 255, 0) 25.1%,
+    rgba(0, 98, 255, 0.32) 72.57%,
+    rgba(0, 98, 255, 0) 102.57%
   ),
   linear-gradient(0deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -313,25 +343,23 @@ a {
   mask-composite: exclude;
 }
 
-/* ---- Logo Scroll ---- */
-.logo-scroll-track {
+/* ---- Logo Loop (RAF-based) ---- */
+.logo-loop-wrapper {
+  width: 100%;
+}
+
+.logo-loop-track {
   display: flex;
   align-items: center;
-  gap: 72px;
   width: max-content;
-  animation: css-scroll 38s linear infinite;
   will-change: transform;
 }
 
-.logo-scroll-item {
+.logo-loop-item {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.logo-scroll-track:hover {
-  animation-play-state: paused;
 }
 
 /* ---- FAQ ---- */
@@ -360,7 +388,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'WFVisualSans', var(--font-poppins), 'Poppins', sans-serif;
   font-size: var(--para);
   outline: none;
   transition: border-color 0.2s ease;
@@ -419,7 +447,7 @@ textarea.form-field {
 /* ---- CurvedLoop text style ---- */
 .curved-marquee-text {
   fill: rgba(255, 255, 255, 0.85);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-size: 5rem;
   font-weight: 800;
   letter-spacing: 0.02em;
@@ -427,6 +455,14 @@ textarea.form-field {
 
 /* Hide scrollbar utility */
 .scrollbar-none::-webkit-scrollbar { display: none; }
+
+/* Beams canvas */
+.beams-canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
 
 /* ---- Process Steps ---- */
 .process-step {
@@ -443,7 +479,7 @@ textarea.form-field {
 }
 
 .process-step-highlighted {
-  background: linear-gradient(135deg, rgba(126, 61, 255, 0.12) 0%, rgba(79, 245, 67, 0.06) 100%);
+  background: linear-gradient(135deg, rgba(126, 61, 255, 0.12) 0%, rgba(0, 98, 255, 0.06) 100%);
   border: 1px solid rgba(126, 61, 255, 0.25);
   border-radius: 14px;
   padding: 28px 32px;
@@ -474,7 +510,7 @@ textarea.form-field {
 .success-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 255, 17, 0.08);
+  background: rgba(0, 98, 255, 0.08);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -505,7 +541,7 @@ textarea.form-field {
 
 /* ---- Highlight text (FAQ categories) ---- */
 .highlight-text {
-  font-family: 'Inconsolata', monospace;
+  font-family: var(--font-inconsolata), 'Inconsolata', monospace;
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--green-accent);
@@ -561,7 +597,7 @@ textarea.form-field {
 /* ---- Nav link underline ---- */
 .nav-link {
   position: relative;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'WFVisualSans', var(--font-montserrat), 'Montserrat', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   color: rgba(255,255,255,0.75);

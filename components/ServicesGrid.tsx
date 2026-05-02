@@ -66,7 +66,7 @@ const SERVICES = [
 export default function ServicesGrid() {
   return (
     <section id="why-us-x" className="section-padding bg-[#0b011d] relative overflow-hidden">
-      <div className="blob-animate is5 pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -92,7 +92,7 @@ export default function ServicesGrid() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   background: s.accent === 'green'
-                    ? 'radial-gradient(ellipse at top right, rgba(79,245,67,0.07) 0%, transparent 70%)'
+                    ? 'radial-gradient(ellipse at top right, rgba(0,98,255,0.07) 0%, transparent 70%)'
                     : 'radial-gradient(ellipse at top right, rgba(126,61,255,0.08) 0%, transparent 70%)',
                 }}
               />
@@ -160,23 +160,6 @@ export default function ServicesGrid() {
           ))}
         </div>
 
-        {/* Why Us strip */}
-        <div className="mt-20 pt-16 border-t border-white/[0.06]">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { emoji: '🚀', title: 'Quality-Driven', desc: 'Precision, creativity, and high-impact execution on every project.' },
-              { emoji: '🤝', title: 'In-House Feel', desc: "We embed with your team and align fully with your goals." },
-              { emoji: '📢', title: 'Transparent', desc: 'Clear updates at every stage — no surprises, ever.' },
-              { emoji: '⚡', title: 'On-Time Delivery', desc: 'We ship on schedule without cutting corners on quality.' },
-            ].map((card, i) => (
-              <div key={i} className="why-card flex flex-col gap-3">
-                <div className="text-3xl">{card.emoji}</div>
-                <h3 className="text-white font-bold font-montserrat text-base">{card.title}</h3>
-                <p className="para text-xs leading-relaxed">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

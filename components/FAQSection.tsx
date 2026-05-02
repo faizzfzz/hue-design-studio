@@ -166,7 +166,7 @@ export default function FAQSection() {
           <div className="hidden lg:block">
             <div className="sticky top-28 rounded-2xl p-8 overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, rgba(126,61,255,0.14) 0%, rgba(79,245,67,0.06) 100%)',
+                background: 'linear-gradient(135deg, rgba(126,61,255,0.14) 0%, rgba(0,98,255,0.06) 100%)',
                 border: '1px solid rgba(126,61,255,0.25)',
               }}
             >

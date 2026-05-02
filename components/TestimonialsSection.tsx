@@ -29,7 +29,7 @@ const TESTIMONIALS = [
 export default function TestimonialsSection() {
   return (
     <section className="section-padding bg-[#0b011d] relative overflow-hidden">
-      <div className="blob-animate is-4 pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -52,14 +52,6 @@ export default function TestimonialsSection() {
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[20px]"
                 style={{ background: 'radial-gradient(ellipse at top left, rgba(126,61,255,0.08) 0%, transparent 70%)' }}
               />
-
-              {/* Big quote mark */}
-              <div
-                className="text-8xl leading-none font-serif select-none -mt-3 -ml-1"
-                style={{ color: 'rgba(126,61,255,0.25)' }}
-              >
-                &ldquo;
-              </div>
 
               {/* Stars */}
               <div className="flex gap-1 -mt-4">

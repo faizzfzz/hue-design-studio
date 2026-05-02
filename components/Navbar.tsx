@@ -59,7 +59,7 @@ export default function Navbar() {
             Process
           </a>
           <a href="#FAQ-x" className="nav-link" onClick={(e) => handleAnchorClick(e, 'FAQ-x')}>
-            FAQs&nbsp;&nbsp;
+            FAQs
           </a>
         </nav>
 

@@ -1,5 +1,28 @@
 import type { Metadata } from 'next'
+import { Montserrat, Poppins, Inconsolata } from 'next/font/google'
 import './globals.css'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-montserrat',
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+})
+
+const inconsolata = Inconsolata({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-inconsolata',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: '🚀 High-Converting Websites for Brands | Scalable Web Design & Development',
@@ -43,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} ${poppins.variable} ${inconsolata.variable}`}>
       <body>{children}</body>
     </html>
   )

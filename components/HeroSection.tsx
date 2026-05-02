@@ -1,12 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import LogoLoop from '@/components/LogoLoop'
 
 export default function HeroSection() {
   const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -15,54 +13,28 @@ export default function HeroSection() {
     }
   }
 
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault()
-    const el = document.getElementById(id)
-    if (el) {
-      const offset = 80
-      const top = el.getBoundingClientRect().top + window.scrollY - offset
-      window.scrollTo({ top, behavior: 'smooth' })
-    }
-  }
-
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#0b011d]">
-      {/* Animated blobs */}
-      <div className="blob-animate is-3rd" />
-      <div className="blob-animate is-2nd" />
-      <div className="blob-animate is-1st" />
-
-      {/* Background images (subtle overlay) */}
-      <div className="absolute inset-0 pointer-events-none">
-        <Image
-          src="https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/67da879dadc15ce4eb36fa50_10x%20Scalability.avif"
-          alt=""
-          fill
-          className="object-cover opacity-10"
-          priority
-        />
-      </div>
-
       {/* Main content */}
       <div className="relative z-10 flex-1 flex flex-col justify-center pt-32 pb-12 px-6 max-w-7xl mx-auto w-full">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
-          {/* Left: Headline */}
-          <div className="flex-1">
+        <div className="flex flex-col gap-12 items-center text-center">
+          {/* Headline */}
+          <div className="flex flex-col items-center">
             <h1 className="heading-h1 mb-6">
               <span className="hidden md:inline">🚀</span> Building Websites
             </h1>
             <div className="max-w-[750px]">
               <p className="para text-lg leading-relaxed">
                 <strong className="text-white">—</strong> that boost your brand&apos;s credibility, build trust, drive leads, and{' '}
-                <span className="text-green-accent font-semibold">
+                <span style={{ color: '#0062ff' }} className="font-semibold">
                   turn visitors into paying customers.
                 </span>
               </p>
             </div>
           </div>
 
-          {/* Right: CTA Form & Buttons */}
-          <div className="flex flex-col gap-5 w-full lg:w-auto lg:min-w-[380px]">
+          {/* CTA Form & Buttons */}
+          <div className="flex flex-col gap-5 w-full max-w-[480px] items-center">
             {/* Email form */}
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
               <input
@@ -81,7 +53,7 @@ export default function HeroSection() {
             </form>
 
             {/* Secondary CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <a
                 href="https://calendly.com/talkwithfaiz/30min"
                 target="_blank"
@@ -90,23 +62,26 @@ export default function HeroSection() {
               >
                 📅 Schedule a Call
               </a>
-              <a
-                href="#form"
-                className="text-button"
-                onClick={(e) => handleAnchorClick(e, 'form')}
-              >
-                <strong>Send Us a Message</strong>
-              </a>
             </div>
           </div>
         </div>
 
         {/* Client logos */}
-        <div className="mt-20">
-          <h2 className="text-lg font-semibold text-white/70 font-montserrat mb-8 tracking-wide">
+        <div className="mt-20 w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+          <h2 className="text-lg font-semibold text-white/70 mb-8 tracking-wide px-6 text-center">
             Trusted by Leading Brands
           </h2>
-          <ClientLogoScroll />
+          <LogoLoop
+            logos={CLIENT_LOGOS}
+            speed={80}
+            direction="left"
+            logoHeight={100}
+            gap={40}
+            hoverSpeed={0}
+            fadeOut
+            fadeOutColor="#0b011d"
+            ariaLabel="Trusted brands"
+          />
         </div>
       </div>
     </section>
@@ -164,31 +139,3 @@ const CLIENT_LOGOS = [
   },
 ]
 
-function ClientLogoScroll() {
-  const logos = [...CLIENT_LOGOS, ...CLIENT_LOGOS]
-
-  return (
-    <div
-      className="overflow-hidden"
-      style={{
-        maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-      }}
-    >
-      <div className="logo-scroll-track">
-        {logos.map((logo, i) => (
-          <div key={i} className="logo-scroll-item">
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={180}
-              height={64}
-              className="h-14 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-              style={{ mixBlendMode: 'luminosity' }}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}

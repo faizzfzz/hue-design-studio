@@ -15,7 +15,7 @@ const PROJECTS = [
 export default function ProjectsGrid() {
   return (
     <section id="projects-x" className="relative section-padding bg-[#0b011d]">
-      <div className="blob-animate is-4 pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -26,16 +26,6 @@ export default function ProjectsGrid() {
             <p className="para max-w-md">
               Websites that captivate, convert, and scale — built for leading brands.
             </p>
-          </div>
-          <div className="flex gap-10 flex-shrink-0">
-            <div className="text-center">
-              <div className="heading-h2 text-white font-bold">5+</div>
-              <div className="para text-xs mt-1">Years of Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="heading-h2 text-white font-bold">20+</div>
-              <div className="para text-xs mt-1">Projects Completed</div>
-            </div>
           </div>
         </div>
 
