@@ -22,17 +22,14 @@ const LOGOS = [
 const LOGO_W = 110
 const LOGO_H = 38
 
-interface CurvedLogoLoopProps {
+interface Props {
   speed?: number
   curveAmount?: number
   interactive?: boolean
 }
 
-export default function CurvedLogoLoop({
-  speed = 1.2,
-  curveAmount = 220,
-  interactive = true,
-}: CurvedLogoLoopProps) {
+export default function CurvedLogoLoop({ speed = 1.2, curveAmount = 220, interactive = true }: Props) {
+  const svgRef = useRef<SVGSVGElement>(null)
   const pathRef = useRef<SVGPathElement>(null)
   const imageRefs = useRef<(SVGImageElement | null)[]>([])
   const offsetRef = useRef(0)
@@ -40,42 +37,60 @@ export default function CurvedLogoLoop({
   const lastXRef = useRef(0)
   const velRef = useRef(0)
   const dirRef = useRef<'left' | 'right'>('left')
-  const svgRef = useRef<SVGSVGElement>(null)
 
   const pathD = `M-200,75 Q720,${75 + curveAmount} 1640,75`
 
   useEffect(() => {
     const pathEl = pathRef.current
-    if (!pathEl) return
-
-    const pathLen = pathEl.getTotalLength()
-    const n = LOGOS.length
-    const spacing = pathLen / n
+    const svgEl = svgRef.current
+    if (!pathEl || !svgEl) return
 
     let frameId: number
+    let animating = false
 
-    const step = () => {
-      if (!dragRef.current) {
-        const delta = dirRef.current === 'right' ? speed : -speed
-        offsetRef.current = ((offsetRef.current + delta) % pathLen + pathLen) % pathLen
+    const tryInit = () => {
+      const pathLen = pathEl.getTotalLength()
+
+      // Wait until the browser has computed the path geometry
+      if (pathLen === 0) {
+        frameId = requestAnimationFrame(tryInit)
+        return
       }
 
-      imageRefs.current.forEach((el, i) => {
-        if (!el) return
-        const dist = ((i * spacing + offsetRef.current) % pathLen + pathLen) % pathLen
-        const pt = pathEl.getPointAtLength(dist)
-        el.setAttribute('x', String(pt.x - LOGO_W / 2))
-        el.setAttribute('y', String(pt.y - LOGO_H / 2))
-      })
+      const n = LOGOS.length
+      const spacing = pathLen / n
 
-      frameId = requestAnimationFrame(step)
+      const animate = () => {
+        if (!dragRef.current) {
+          const delta = dirRef.current === 'right' ? speed : -speed
+          offsetRef.current = ((offsetRef.current + delta) % pathLen + pathLen) % pathLen
+        }
+
+        imageRefs.current.forEach((el, i) => {
+          if (!el) return
+          const dist = ((i * spacing + offsetRef.current) % pathLen + pathLen) % pathLen
+          const pt = pathEl.getPointAtLength(dist)
+          el.setAttribute('x', String(pt.x - LOGO_W / 2))
+          el.setAttribute('y', String(pt.y - LOGO_H / 2))
+        })
+
+        // Reveal SVG only after first positions are set
+        if (!animating) {
+          svgEl.style.visibility = 'visible'
+          animating = true
+        }
+
+        frameId = requestAnimationFrame(animate)
+      }
+
+      frameId = requestAnimationFrame(animate)
     }
 
-    frameId = requestAnimationFrame(step)
+    frameId = requestAnimationFrame(tryInit)
     return () => cancelAnimationFrame(frameId)
-  }, [speed])
+  }, [speed, curveAmount])
 
-  const handlePointerDown = (e: React.PointerEvent) => {
+  const onPointerDown = (e: React.PointerEvent) => {
     if (!interactive) return
     dragRef.current = true
     lastXRef.current = e.clientX
@@ -83,7 +98,7 @@ export default function CurvedLogoLoop({
     ;(e.currentTarget as Element).setPointerCapture(e.pointerId)
   }
 
-  const handlePointerMove = (e: React.PointerEvent) => {
+  const onPointerMove = (e: React.PointerEvent) => {
     if (!interactive || !dragRef.current || !pathRef.current) return
     const dx = e.clientX - lastXRef.current
     lastXRef.current = e.clientX
@@ -92,7 +107,7 @@ export default function CurvedLogoLoop({
     offsetRef.current = ((offsetRef.current + dx * 2.5) % pathLen + pathLen) % pathLen
   }
 
-  const handlePointerUp = () => {
+  const onPointerUp = () => {
     if (!interactive) return
     dragRef.current = false
     dirRef.current = velRef.current > 0 ? 'right' : 'left'
@@ -102,22 +117,18 @@ export default function CurvedLogoLoop({
     <div
       className="w-full overflow-hidden select-none"
       style={{ cursor: interactive ? 'grab' : 'default' }}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerLeave={handlePointerUp}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerLeave={onPointerUp}
     >
       <svg
         ref={svgRef}
         viewBox="0 0 1440 150"
         className="w-full block"
-        style={{ aspectRatio: '1440 / 150', userSelect: 'none' }}
+        style={{ aspectRatio: '1440 / 150', userSelect: 'none', visibility: 'hidden' }}
       >
         <defs>
-          {/* Hidden path for position calculation */}
-          <path ref={pathRef} d={pathD} fill="none" stroke="none" />
-
-          {/* Edge fade */}
           <linearGradient id="logo-fade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%"   stopColor="black" stopOpacity="0" />
             <stop offset="7%"   stopColor="black" stopOpacity="1" />
@@ -129,11 +140,20 @@ export default function CurvedLogoLoop({
           </mask>
         </defs>
 
+        {/* Path lives outside defs so the browser computes its geometry */}
+        <path
+          ref={pathRef}
+          d={pathD}
+          fill="none"
+          stroke="none"
+          style={{ pointerEvents: 'none' }}
+        />
+
         <g mask="url(#logo-fade-mask)">
           {LOGOS.map((logo, i) => (
             <image
               key={i}
-              ref={(el) => { imageRefs.current[i] = el }}
+              ref={(el) => { imageRefs.current[i] = el as SVGImageElement | null }}
               href={logo.src}
               width={LOGO_W}
               height={LOGO_H}
