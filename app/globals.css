@@ -316,8 +316,18 @@ a {
 /* ---- Logo Scroll ---- */
 .logo-scroll-track {
   display: flex;
+  align-items: center;
+  gap: 72px;
   width: max-content;
-  animation: css-scroll 30s linear infinite;
+  animation: css-scroll 38s linear infinite;
+  will-change: transform;
+}
+
+.logo-scroll-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo-scroll-track:hover {
@@ -377,6 +387,29 @@ textarea.form-field {
   border-radius: 16px;
   padding: 24px;
 }
+
+.testimonial-card-new {
+  background: linear-gradient(135deg, rgba(126,61,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card-new:hover {
+  border-color: rgba(126,61,255,0.3);
+  box-shadow: 0 0 40px rgba(126,61,255,0.1);
+}
+
+/* ---- Service Card ---- */
+.service-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(126,61,255,0.12);
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar { display: none; }
 
 /* ---- Process Steps ---- */
 .process-step {

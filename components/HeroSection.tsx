@@ -45,7 +45,7 @@ export default function HeroSection() {
 
       {/* Main content */}
       <div className="relative z-10 flex-1 flex flex-col justify-center pt-32 pb-12 px-6 max-w-7xl mx-auto w-full">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
           {/* Left: Headline */}
           <div className="flex-1">
             <h1 className="heading-h1 mb-6">
@@ -165,25 +165,25 @@ const CLIENT_LOGOS = [
 ]
 
 function ClientLogoScroll() {
-  // Duplicate for seamless loop
   const logos = [...CLIENT_LOGOS, ...CLIENT_LOGOS]
 
   return (
-    <div className="overflow-hidden relative">
-      {/* Left fade */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0b011d] to-transparent z-10 pointer-events-none" />
-      {/* Right fade */}
-      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0b011d] to-transparent z-10 pointer-events-none" />
-
-      <div className="logo-scroll-track gap-12 items-center">
+    <div
+      className="overflow-hidden"
+      style={{
+        maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+      }}
+    >
+      <div className="logo-scroll-track">
         {logos.map((logo, i) => (
-          <div key={i} className="flex-shrink-0 px-4">
+          <div key={i} className="logo-scroll-item">
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={120}
-              height={40}
-              className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-200"
+              width={180}
+              height={64}
+              className="h-14 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
             />
           </div>
         ))}
