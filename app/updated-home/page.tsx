@@ -391,7 +391,7 @@ function PortfolioNew() {
 
         <ChromaGrid
           items={PROJECTS}
-          radius={320}
+          radius={480}
           damping={0.45}
           fadeOut={0.6}
           ease="power3.out"
