@@ -11,6 +11,7 @@ import SplitHeading from '@/components/SplitHeading'
 import FadeUp from '@/components/FadeUp'
 
 const Beams = dynamic(() => import('@/components/Beams'), { ssr: false })
+const FlowingMenu = dynamic(() => import('@/components/FlowingMenu'), { ssr: false })
 
 const BASE = 'https://cdn.prod.website-files.com/67ac3af1ffceaa0540cf0fe3/'
 
@@ -371,102 +372,40 @@ function ProcessNew() {
   )
 }
 
+const FLOWING_ITEMS = PROJECTS.map(p => ({
+  link: p.url,
+  text: p.title,
+  image: p.image2 ?? p.image,
+  marqueeBg: p.borderColor,
+  marqueeFg: '#000000',
+}))
+
 function PortfolioNew() {
-  const [activeProject, setActiveProject] = useState(null as null | number)
-
   return (
-    <section id="projects-x" className="section-padding dot-bg">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects-x" className="dot-bg">
+      <div className="pt-20 pb-6 max-w-7xl mx-auto px-6">
+        <FadeUp><SectionTag>Recent Work</SectionTag></FadeUp>
+        <SplitHeading as="h2" className="heading-h2 mb-3">Projects I&apos;ve shipped</SplitHeading>
+        <FadeUp delay={0.1}><p className="para max-w-md">Real sites. Real clients. Real results.</p></FadeUp>
+      </div>
 
-        <div className="mb-14">
-          <FadeUp><SectionTag>Recent Work</SectionTag></FadeUp>
-          <SplitHeading as="h2" className="heading-h2 mb-3">Projects I&apos;ve shipped</SplitHeading>
-          <FadeUp delay={0.1}><p className="para max-w-md">Real sites. Real clients. Real results.</p></FadeUp>
-        </div>
+      <div style={{ height: '630px', position: 'relative' }}>
+        <FlowingMenu
+          items={FLOWING_ITEMS}
+          speed={20}
+          textColor="#ffffff"
+          bgColor="#000000"
+          borderColor="rgba(255,255,255,0.08)"
+        />
+      </div>
 
-        {/* Desktop hover list */}
-        <div className="hidden md:block portfolio-list">
-          {PROJECTS.map((project, i) => {
-            const active = activeProject === i
-            const faded = activeProject !== null && !active
-            return (
-              <a
-                key={i}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="portfolio-row"
-                onMouseEnter={() => setActiveProject(i)}
-                onMouseLeave={() => setActiveProject(null)}
-              >
-                <span className="portfolio-row-num"
-                  style={{ color: active ? project.borderColor : faded ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.25)' }}>
-                  0{i + 1}
-                </span>
-
-                <span className="portfolio-row-title"
-                  style={{ color: active ? project.borderColor : faded ? 'rgba(255,255,255,0.15)' : '#fff' }}>
-                  {project.title}
-                </span>
-
-                <div className="portfolio-row-preview"
-                  style={{
-                    opacity: active ? 1 : 0,
-                    transform: active
-                      ? 'translateY(-50%) translateX(0px) scale(1)'
-                      : 'translateY(-50%) translateX(18px) scale(0.95)',
-                  }}>
-                  <Image src={project.image} alt={project.title} fill className="object-cover" sizes="280px" />
-                  <div className="absolute inset-0 opacity-25 pointer-events-none"
-                    style={{ background: project.gradient }} />
-                </div>
-
-                <span className="portfolio-row-arrow"
-                  style={{
-                    color: active ? project.borderColor : faded ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.25)',
-                    transform: active ? 'translate(4px,-4px)' : 'translate(0,0)',
-                  }}>
-                  &#x2197;
-                </span>
-              </a>
-            )
-          })}
-        </div>
-
-        {/* Mobile card grid */}
-        <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {PROJECTS.map((project, i) => (
-            <a
-              key={i}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="portfolio-mobile-card"
-              style={{ borderColor: project.borderColor + '28' }}
-            >
-              <Image src={project.image} alt={project.title} fill className="object-cover"
-                sizes="(max-width: 640px) 100vw, 50vw" />
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 60%)' }} />
-              <div className="absolute top-0 left-0 right-0 h-0.5"
-                style={{ background: project.borderColor }} />
-              <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-                <h3 className="text-white font-bold text-xl leading-none">{project.title}</h3>
-                <span className="text-base" style={{ color: project.borderColor }}>&#x2197;</span>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <div className="mt-14 text-center">
-          <FadeUp>
-            <Link href="https://linktr.ee/faizzfz" target="_blank" rel="noopener noreferrer"
-              className="base-button px-8">
-              See All Projects &#x2192;
-            </Link>
-          </FadeUp>
-        </div>
-
+      <div className="pb-20 flex justify-center">
+        <FadeUp>
+          <Link href="https://linktr.ee/faizzfz" target="_blank" rel="noopener noreferrer"
+            className="base-button px-8">
+            See All Projects &#x2192;
+          </Link>
+        </FadeUp>
       </div>
     </section>
   )
