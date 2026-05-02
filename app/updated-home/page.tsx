@@ -302,7 +302,7 @@ function ServicesNew() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <FadeUp><SectionTag>What I Do</SectionTag></FadeUp>
-          <SplitHeading as="h2" className="heading-h2 mb-4">Here's how I help</SplitHeading>
+          <SplitHeading as="h2" className="heading-h2 mb-4">Here&apos;s how I help</SplitHeading>
           <FadeUp delay={0.1}><p className="para max-w-lg">Three focused services. Each one designed to solve a specific problem.</p></FadeUp>
         </div>
 
@@ -626,7 +626,7 @@ function FinalCTA() {
         </div>
 
         <SectionTag>Ready to Start?</SectionTag>
-        <SplitHeading as="h2" className="heading-h2 mb-5">Let's build something great</SplitHeading>
+        <SplitHeading as="h2" className="heading-h2 mb-5">Let&apos;s build something great</SplitHeading>
         <p className="para text-lg mb-4 max-w-xl mx-auto">
           I&apos;m currently accepting new agency partners and project inquiries.
         </p>
