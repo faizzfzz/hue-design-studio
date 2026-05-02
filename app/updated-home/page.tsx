@@ -198,7 +198,7 @@ function PainSection() {
   ]
 
   return (
-    <section className="section-padding bg-[#000000] relative">
+    <section className="section-padding dot-bg relative">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>For Agency Owners</SectionTag>
@@ -253,7 +253,7 @@ function ServicesNew() {
   ]
 
   return (
-    <section className="section-padding bg-[#000000]">
+    <section className="section-padding dot-bg">
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <SectionTag>What I Do</SectionTag>
@@ -294,7 +294,7 @@ function ProcessNew() {
   ]
 
   return (
-    <section id="process-x" className="section-padding bg-[#000000]">
+    <section id="process-x" className="section-padding dot-bg">
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <SectionTag>How We Work</SectionTag>
@@ -331,7 +331,7 @@ function ProcessNew() {
 
 function PortfolioNew() {
   return (
-    <section id="projects-x" className="section-padding bg-[#000000] relative">
+    <section id="projects-x" className="section-padding dot-bg relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-12">
           <SectionTag>Recent Work</SectionTag>
@@ -384,7 +384,7 @@ function WhyMeSection() {
   ]
 
   return (
-    <section id="why-us-x" className="section-padding bg-[#000000] relative overflow-hidden">
+    <section id="why-us-x" className="section-padding dot-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-14">
           <SectionTag>Why Me</SectionTag>
@@ -410,7 +410,7 @@ function WhyMeSection() {
 
 function TestimonialsNew() {
   return (
-    <section className="section-padding bg-[#000000] relative overflow-hidden">
+    <section className="section-padding dot-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-14">
           <SectionTag>Client Stories</SectionTag>
@@ -488,7 +488,7 @@ function PricingSection() {
   ]
 
   return (
-    <section className="section-padding bg-[#000000]">
+    <section className="section-padding dot-bg">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>Investment</SectionTag>
@@ -544,7 +544,7 @@ function FAQNew() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="FAQ-x" className="section-padding bg-[#000000]">
+    <section id="FAQ-x" className="section-padding dot-bg">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>FAQs</SectionTag>
@@ -581,7 +581,7 @@ function FAQNew() {
 
 function FinalCTA() {
   return (
-    <section id="form" className="section-padding bg-[#000000] relative overflow-hidden">
+    <section id="form" className="section-padding dot-bg relative overflow-hidden">
       <div className="max-w-3xl mx-auto relative z-10 text-center">
         {/* Availability badge */}
         <div className="flex justify-center mb-6">
