@@ -129,7 +129,7 @@ function HeroNew() {
 
       {/* Bottom fade to next section */}
       <div className="absolute bottom-0 left-0 right-0 h-64 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, transparent 0%, #000000 40%, #0b011d 100%)' }} />
+        style={{ background: 'linear-gradient(to bottom, transparent 0%, #000000 100%)' }} />
 
       <div className="relative z-10 flex-1 flex flex-col justify-center pt-36 pb-16 px-6 max-w-5xl mx-auto w-full text-center">
         {/* Tag */}
@@ -198,7 +198,7 @@ function PainSection() {
   ]
 
   return (
-    <section className="section-padding bg-[#0b011d] relative">
+    <section className="section-padding bg-[#000000] relative">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>For Agency Owners</SectionTag>
@@ -253,7 +253,7 @@ function ServicesNew() {
   ]
 
   return (
-    <section className="section-padding bg-[#0b011d]">
+    <section className="section-padding bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <SectionTag>What I Do</SectionTag>
@@ -294,7 +294,7 @@ function ProcessNew() {
   ]
 
   return (
-    <section id="process-x" className="section-padding bg-[#0b011d]">
+    <section id="process-x" className="section-padding bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <SectionTag>How We Work</SectionTag>
@@ -331,7 +331,7 @@ function ProcessNew() {
 
 function PortfolioNew() {
   return (
-    <section id="projects-x" className="section-padding bg-[#0b011d] relative">
+    <section id="projects-x" className="section-padding bg-[#000000] relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-12">
           <SectionTag>Recent Work</SectionTag>
@@ -347,7 +347,7 @@ function PortfolioNew() {
               <Image src={project.image} alt={project.name} fill
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b011d]/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
                 <div>
                   <p className="text-white font-bold text-lg drop-shadow">{project.name}</p>
@@ -384,7 +384,7 @@ function WhyMeSection() {
   ]
 
   return (
-    <section id="why-us-x" className="section-padding bg-[#0b011d] relative overflow-hidden">
+    <section id="why-us-x" className="section-padding bg-[#000000] relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-14">
           <SectionTag>Why Me</SectionTag>
@@ -410,7 +410,7 @@ function WhyMeSection() {
 
 function TestimonialsNew() {
   return (
-    <section className="section-padding bg-[#0b011d] relative overflow-hidden">
+    <section className="section-padding bg-[#000000] relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-14">
           <SectionTag>Client Stories</SectionTag>
@@ -488,7 +488,7 @@ function PricingSection() {
   ]
 
   return (
-    <section className="section-padding bg-[#0b011d]">
+    <section className="section-padding bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>Investment</SectionTag>
@@ -544,7 +544,7 @@ function FAQNew() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="FAQ-x" className="section-padding bg-[#0b011d]">
+    <section id="FAQ-x" className="section-padding bg-[#000000]">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
           <SectionTag>FAQs</SectionTag>
@@ -581,7 +581,7 @@ function FAQNew() {
 
 function FinalCTA() {
   return (
-    <section id="form" className="section-padding bg-[#0b011d] relative overflow-hidden">
+    <section id="form" className="section-padding bg-[#000000] relative overflow-hidden">
       <div className="max-w-3xl mx-auto relative z-10 text-center">
         {/* Availability badge */}
         <div className="flex justify-center mb-6">
@@ -624,7 +624,7 @@ function FinalCTA() {
 
 export default function UpdatedHomePage() {
   return (
-    <main className="bg-[#0b011d] text-white overflow-x-hidden">
+    <main className="bg-[#000000] text-white overflow-x-hidden">
       <NavbarFloating />
       <HeroNew />
       <PainSection />
