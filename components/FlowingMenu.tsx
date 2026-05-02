@@ -82,11 +82,9 @@ function MenuItem({
   const animDefaults = { duration: 0.6, ease: 'expo' }
 
   const distSq = (x: number, y: number, x2: number, y2: number) => {
-    const dx = x - x2
-    const dy = y - y2
+    const dx = x - x2; const dy = y - y2
     return dx * dx + dy * dy
   }
-
   const closestEdge = (mx: number, my: number, w: number, h: number) =>
     distSq(mx, my, w / 2, 0) < distSq(mx, my, w / 2, h) ? 'top' : 'bottom'
 
@@ -117,16 +115,18 @@ function MenuItem({
       })
     }
     const t = setTimeout(setup, 50)
-    return () => {
-      clearTimeout(t)
-      if (animRef.current) animRef.current.kill()
-    }
+    return () => { clearTimeout(t); if (animRef.current) animRef.current.kill() }
   }, [text, image, reps, speed])
 
   const onEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return
     const r = itemRef.current.getBoundingClientRect()
     const edge = closestEdge(e.clientX - r.left, e.clientY - r.top, r.width, r.height)
+
+    // Open overflow BEFORE animation so images can float outside the row
+    itemRef.current.style.overflow = 'visible'
+    itemRef.current.style.zIndex = '10'
+
     gsap
       .timeline({ defaults: animDefaults })
       .set(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
@@ -138,8 +138,17 @@ function MenuItem({
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return
     const r = itemRef.current.getBoundingClientRect()
     const edge = closestEdge(e.clientX - r.left, e.clientY - r.top, r.width, r.height)
+
+    const item = itemRef.current
     gsap
-      .timeline({ defaults: animDefaults })
+      .timeline({
+        defaults: animDefaults,
+        onComplete: () => {
+          // Restore clip after marquee has fully exited
+          item.style.overflow = 'hidden'
+          item.style.zIndex = ''
+        },
+      })
       .to(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0)
   }
