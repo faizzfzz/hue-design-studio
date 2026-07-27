@@ -60,14 +60,9 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://linktr.ee/faizzfz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="para text-sm hover:text-white transition-colors"
-                  >
+                  <Link href="/portfolio" className="para text-sm hover:text-white transition-colors">
                     Portfolio
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link href="/success" className="para text-sm hover:text-white transition-colors">
