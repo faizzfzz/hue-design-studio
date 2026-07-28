@@ -17,15 +17,6 @@ const nextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: '/portfolio',
-        destination: '/work-links',
-        permanent: false,
-      },
-    ]
-  },
 }
 
 module.exports = nextConfig
